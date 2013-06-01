@@ -3,9 +3,8 @@
 angular.module('productsServices', ['ngResource'])
   .factory('Products', function ($resource) {
 
-    return $resource('products/products.json', {}, {
+    return $resource('products/:productId.json', {}, {
       // We query all the products at once.
-      // @todo: Add option to limit those products.
-      query: {method:'GET', isArray:true}
+      query: {method:'GET', params:{productId:'products'}, isArray:true}
     });
   });

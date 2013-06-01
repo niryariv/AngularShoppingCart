@@ -6,9 +6,13 @@ angular.module('AngularShoppingCartApp')
     angularLocalStorage.constant('prefix', 'AngularShoppingCartApp');
 
     var productsInStore = localStorageService.get('products');
-    $scope.products = productsInStore || Products.get();
+
+    // @todo: Add local storage.
+    // $scope.products = productsInStore || Products.query();
+    $scope.products = Products.query();
+
     $scope.$watch(function() {
-      localStorageService.add('products', $scope.products);
+      // localStorageService.add('products', $scope.products);
     });
 
     $scope.awesomeThings = [
