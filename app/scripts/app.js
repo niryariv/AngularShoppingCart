@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('AngularShoppingCartApp', ['LocalStorageModule'])
+angular.module('AngularShoppingCartApp', ['LocalStorageModule', 'productsServices'])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {

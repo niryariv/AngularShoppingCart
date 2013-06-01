@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('AngularShoppingCartApp')
-  .controller('MainCtrl', ['$scope', 'localStorageService', function ($scope, localStorageService) {
+  .controller('MainCtrl', ['$scope', 'localStorageService', 'productsServices', function ($scope, localStorageService, productsServices) {
 
     angularLocalStorage.constant('prefix', 'AngularShoppingCartApp');
 
