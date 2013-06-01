@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('AngularShoppingCartApp', ['ngResource'])
-  .factory('productsServices', function ($resource) {
+angular.module('productsServices', ['ngResource'])
+  .factory('Products', function ($resource) {
 
     return $resource('products/products.json', {}, {
       // We query all the products at once.

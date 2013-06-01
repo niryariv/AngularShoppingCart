@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('AngularShoppingCartApp')
-  .controller('MainCtrl', ['$scope', 'localStorageService', 'productsServices', function ($scope, localStorageService, productsServices) {
+  .controller('MainCtrl', ['$scope', 'localStorageService', 'Products', function ($scope, localStorageService, Products) {
 
     angularLocalStorage.constant('prefix', 'AngularShoppingCartApp');
 
     var productsInStore = localStorageService.get('products');
-    $scope.products = productsInStore || [];
+    $scope.products = productsInStore || Products.get();
     $scope.$watch(function() {
       localStorageService.add('products', $scope.products);
     });

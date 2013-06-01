@@ -6,9 +6,10 @@
     "name": "Mor Dress",
     "sizes": {}
   },
+
   {
     "id": "2",
-    "sku": 2
+    "sku": 2,
     "imageUrl": "img/phones/motorola-xoom-with-wi-fi.0.jpg",
     "name": "Eli Pants",
     "sizes": {}
