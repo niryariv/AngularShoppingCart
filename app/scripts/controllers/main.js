@@ -11,9 +11,10 @@ angular.module('AngularShoppingCartApp')
     // $scope.products = productsInStore || Products.query();
     $scope.products = Products.query();
 
-    $scope.$watch(function() {
+
+    // $scope.$watch(function() {
       // localStorageService.add('products', $scope.products);
-    });
+    // });
 
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

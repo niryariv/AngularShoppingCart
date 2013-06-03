@@ -5,6 +5,6 @@ angular.module('productsServices', ['ngResource'])
 
     return $resource('products/:productId.json', {}, {
       // We query all the products at once.
-      query: {method:'GET', params:{productId:'products'}, isArray:true}
+      query: {method:'GET', params:{productId: 'products'}, isArray: false}
     });
   });
