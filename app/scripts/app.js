@@ -7,6 +7,10 @@ angular.module('AngularShoppingCartApp', ['LocalStorageModule', 'productsService
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/variants/:variantId', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

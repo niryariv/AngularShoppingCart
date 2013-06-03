@@ -1,10 +1,19 @@
 {
   "1": {
-    "id": "1",
     "sku": 1,
     "imageUrl": "img/phones/motorola-xoom-with-wi-fi.0.jpg",
     "name": "Mor Dress",
-    "sizes": {}
+    "sizes": {},
+    "variants": {
+      "10": {
+        "color": "blue",
+        "price": "20"
+      },
+      "20": {
+        "color": "red",
+        "price": "50"
+      }
+    }
   },
 
   "2": {
@@ -12,6 +21,12 @@
     "sku": 2,
     "imageUrl": "img/phones/motorola-xoom-with-wi-fi.0.jpg",
     "name": "Eli Pants",
-    "sizes": {}
+    "sizes": {},
+    "variants": {
+      "30": {
+        "color": "blue",
+        "price": "20"
+      }
+    }
   }
 }
