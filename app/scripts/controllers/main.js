@@ -14,19 +14,27 @@ angular.module('AngularShoppingCartApp')
     var productID = 1;
 
     $scope.products = Products.query(function(products) {
-      console.log(products);
+
+      $scope.variants = products[productID].variants;
 
 
       // Check if the variant exists, and if it's a valid key. Otherwise get the
       // first variant of the product.
-      var defaultVariant;
-      for (var key in products[productID].variants) {
-        // Get the first variant ID.
-        defaultVariant = key;
-        break
+      var variantId;
+      if ($routeParams.variantId) {
+        variantId = $routeParams.variantId;
+      }
+      else {
+        for (var key in products[productID].variants) {
+          // Get the first variant ID.
+          variantId = key;
+          break
+        }
       }
 
-      $scope.variant = $routeParams.variantId || defaultVariant;
+      $scope.variant = products[productID].variants[variantId];
+
+
     });
 
     // $scope.$watch(function() {

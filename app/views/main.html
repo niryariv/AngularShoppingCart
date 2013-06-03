@@ -4,9 +4,13 @@
   <ul>
       <li ng-repeat="thing in awesomeThings">{{thing}}</li>
   </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
 
-  Variant {{ variant | json }}
+  <ul>
+    <li ng-repeat="item in variants"><a href="#variants/{{ item.variantId }}">{{ item.color }}</a></li>
+  </ul>
+
+
+
+  <img ng-src="{{ variant.images.main }}"/>
 
 </div>
