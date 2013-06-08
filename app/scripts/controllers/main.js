@@ -33,8 +33,6 @@ angular.module('AngularShoppingCartApp')
       }
 
       $scope.variant = products[productID].variants[variantId];
-
-
     });
 
     // $scope.$watch(function() {
