@@ -1,25 +1,23 @@
 {
-  "1": {
-    "sku": 1,
-    "name": "Sigi Dress",
-    "sizes": {},
-    "variants": {
-      "10": {
-        "variantId" : 10,
-        "images": {
-          "main": "http://www.imanimo.com/sites/default/files/styles/zoom/public/adiblack1.jpg"
-        },
-        "color": "blue",
-        "price": "20"
+  "sku": 1,
+  "name": "Mor Dress",
+  "sizes": {},
+  "variants": {
+    "10": {
+      "variantId" : 10,
+      "images": {
+        "main": "http://www.imanimo.com/sites/default/files/styles/zoom/public/adiblack1.jpg"
       },
-      "20": {
-        "variantId" : 20,
-        "images": {
-          "main": "http://www.imanimo.com/sites/default/files/styles/zoom/public/13.jpg"
-        },
-        "color": "red",
-        "price": "50"
-      }
+      "color": "blue",
+      "price": "20"
+    },
+    "20": {
+      "variantId" : 20,
+      "images": {
+        "main": "http://www.imanimo.com/sites/default/files/styles/zoom/public/13.jpg"
+      },
+      "color": "red",
+      "price": "50"
     }
   }
 }

@@ -10,13 +10,9 @@ angular.module('AngularShoppingCartApp')
     // @todo: Add local storage.
     // $scope.products = productsInStore || Products.query();
 
-    // @todo: Remove hardcoding and get the productID form the URL.
-    var productID = 1;
-
     $scope.products = Products.query(function(products) {
 
-      $scope.variants = products[productID].variants;
-
+      $scope.variants = products.variants;
 
       // Check if the variant exists, and if it's a valid key. Otherwise get the
       // first variant of the product.
@@ -25,14 +21,14 @@ angular.module('AngularShoppingCartApp')
         variantId = $routeParams.variantId;
       }
       else {
-        for (var key in products[productID].variants) {
+        for (var key in products.variants) {
           // Get the first variant ID.
           variantId = key;
           break
         }
       }
 
-      $scope.variant = products[productID].variants[variantId];
+      $scope.variant = products.variants[variantId];
     });
 
     // $scope.$watch(function() {
