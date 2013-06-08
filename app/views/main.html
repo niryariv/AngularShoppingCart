@@ -2,10 +2,8 @@
   <h1>'Allo, 'Allo!</h1>
 
   <ul>
-    <li ng-repeat="item in variants"><a href="#variants/{{ item.variantId }}">{{ item.color }}</a></li>
+    <li ng-repeat="item in variants"><a href="#/products/{{  products.uniqueName }}/{{ item.variantId }}">{{ item.color }}</a></li>
   </ul>
-
-
 
   <img ng-src="{{ variant.images.main }}"/>
 

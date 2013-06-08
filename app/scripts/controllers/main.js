@@ -10,7 +10,7 @@ angular.module('AngularShoppingCartApp')
     // @todo: Add local storage.
     // $scope.products = productsInStore || Products.query();
 
-    $scope.products = Products.query(function(products) {
+    $scope.products = Products.get({productId: $routeParams.productId}, function(products) {
 
       $scope.variants = products.variants;
 
