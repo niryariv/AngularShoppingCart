@@ -5,7 +5,16 @@ angular.module('AngularShoppingCartApp')
 
     // angularLocalStorage.constant('prefix', 'AngularShoppingCartApp');
 
-    $scope.sizes = {'small': 1, 'medium': 2};
+    $scope.sizes = {
+      "small": {
+        "entityId": 1,
+        "stock": 100
+      },
+      "medium": {
+        "entityId": 2,
+        "stock": 50
+      }
+    };
 
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
