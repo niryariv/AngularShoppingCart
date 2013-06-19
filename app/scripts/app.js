@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('AngularShoppingCartApp', ['LocalStorageModule', 'productsServices']);
+angular.module('AngularShoppingCartApp', ['LocalStorageModule', 'productsServices', 'cartServices']);

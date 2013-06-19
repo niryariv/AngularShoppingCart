@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('AngularShoppingCartApp')
-  .controller('MainCtrl', ['$scope', 'Products', function ($scope, Products) {
+  .controller('MainCtrl', ['$scope', 'Products', 'Cart', function ($scope, Products, Cart) {
 
     // angularLocalStorage.constant('prefix', 'AngularShoppingCartApp');
 
@@ -11,7 +11,13 @@ angular.module('AngularShoppingCartApp')
 
     $scope.addToCart = function(quantity) {
       var entityId = $scope.sizes[$scope.activeSize].entityId;
-      $scope.cart[entityId] = quantity;
+      $scope.cart[entityId] = {
+        "quantity": quantity,
+        "price": 100,
+      };
+
+      // @todo: Move to $watch()?
+      Cart.setCart($scope.cart);
     };
 
     $scope.waitList = function() {
@@ -33,9 +39,9 @@ angular.module('AngularShoppingCartApp')
       }
     };
 
-    $scope.cart = {};
-
     $scope.quantity = 1;
+    $scope.cart = Cart.getCart();
+
 
     // Assign a defualt active size.
     for (var size in $scope.sizes) {
