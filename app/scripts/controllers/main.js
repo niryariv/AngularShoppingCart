@@ -42,7 +42,6 @@ angular.module('AngularShoppingCartApp')
     $scope.quantity = 1;
     $scope.cart = Cart.getCart();
 
-
     // Assign a defualt active size.
     for (var size in $scope.sizes) {
       if ($scope.sizes[size].stock) {
