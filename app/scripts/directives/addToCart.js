@@ -10,3 +10,18 @@ angular.module('AngularShoppingCartApp')
       }
     };
   });
+
+/**
+ * Show a mini cart, with the item quantity.
+ */
+angular.module('AngularShoppingCartApp')
+  .directive('miniCart', function () {
+    return {
+      template: '<div>{{ productsCount }}</div>',
+      restrict: 'E',
+      // @todo: Add Isolated scope.
+      link: function postLink(scope, element, attrs) {
+      }
+    };
+  });
+
