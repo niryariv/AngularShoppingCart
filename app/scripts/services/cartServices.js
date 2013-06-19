@@ -44,12 +44,15 @@ angular.module('cartServices', ['LocalStorageModule'])
         return this.getItems('LineItems');
       },
 
-      setProduct: function(values) {
-        var values = localStorageService.get('cart');
+      addProduct: function(values) {
+        var products = this.getProducts();
+
+        // Check if we already have this product, and append the quantity.
+
         localStorageService.add('cart.products', JSON.stringify(values));
       },
 
-      setLineItem: function(name, price) {
+      addLineItem: function(name, price) {
 
       }
 
