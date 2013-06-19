@@ -1,10 +1,22 @@
-<div>
+<div xmlns="http://www.w3.org/1999/html">
 
   <h4>Sizes</h4>
 
+  Active size: {{ activeSize }} <br />
+
+  Cart: {{ cart }} <br />
+
+  Quantity: {{ quantity }} <br />
+
   <ul class="inline">
     <li ng-repeat="(size, values) in sizes">
-      <div ng-click="setActiveSize(values.entityId)">{{ size }}</div>
+      <a href="" ng-show="values.stock" ng-click="setActiveSize(size)">{{ size }}</a>
+      <a href="" ng-hide="values.stock" ng-click="waitList(size)">{{ size }}</a>
     </li>
   </ul>
+
+  <form ng-submit="addToCart(quantity)">
+    <input type="number" ng-model="quantity" />
+    <input type="submit" id="submit" value="Add to Cart" />
+  </form>
 </div>

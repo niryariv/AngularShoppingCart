@@ -5,10 +5,7 @@ angular.module('AngularShoppingCartApp')
     return {
       templateUrl: 'views/addtocart.html',
       restrict: 'E',
-      // Isolated scope.
-      scope: {
-        sizes: '=sizes'
-      },
+      // @todo: Add Isolated scope.
       link: function postLink(scope, element, attrs) {
       }
     };
