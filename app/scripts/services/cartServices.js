@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('cartServices', ['LocalStorageModule'])
+angular.module('cartServices')
   .factory('Cart', function (localStorageService) {
 
     return {

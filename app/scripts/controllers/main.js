@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('AngularShoppingCartApp')
-  .controller('MainCtrl', ['$scope', 'Products', 'Cart', function ($scope, Products, Cart) {
+  .controller('MainCtrl', ['$scope', 'Products', 'Cart', 'sizeServices', function ($scope, Products, Cart, sizeServices) {
 
     // angularLocalStorage.constant('prefix', 'AngularShoppingCartApp');
 
@@ -33,6 +33,8 @@ angular.module('AngularShoppingCartApp')
       alert('Add to waiting list');
     };
 
+    /*
+
     $scope.sizes = {
       "small": {
         "entityId": 1,
@@ -47,6 +49,14 @@ angular.module('AngularShoppingCartApp')
         "stock": 0
       }
     };
+
+    */
+
+    sizeServices.gettingSizes().then(function(sizes) {
+      $scope.sizes = sizes;
+    })
+
+
 
     $scope.cart = Cart.getProducts();
     $scope.productsCount = Cart.getProductsCount();
