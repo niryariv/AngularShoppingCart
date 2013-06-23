@@ -2,21 +2,18 @@
 
   <h4>Sizes</h4>
 
-  Active size: {{ activeSize }} <br />
+  Active size: {{ product.selectedSize }} <br />
 
   Cart: {{ cart }} <br />
 
-  Quantity: {{ quantity }} <br />
+  Quantity: {{ product.quantity }} <br />
 
-  <ul class="inline">
-    <li ng-repeat="(size, values) in sizes">
-      <a href="" ng-show="values.stock" ng-click="setActiveSize(size)">{{ size }}</a>
-      <a href="" ng-hide="values.stock" ng-click="waitList(size)">{{ size }}</a>
-    </li>
-  </ul>
+  <div class="btn-group">
+    <button ng-repeat="(size, values) in sizes" type="button" class="btn btn-primary" ng-model="product.selectedSize" btn-radio="size">{{ size }}</button>
+  </div>
 
-  <form ng-submit="addToCart(quantity)">
-    <input type="number" min="1" ng-model="quantity" class="input-mini" />
+  <form ng-submit="onAddToCart({product: product})">
+    <input type="number" min="1" ng-model="product.quantity" class="input-mini" />
     <input type="submit" id="submit" value="Add to Cart" />
   </form>
 </div>

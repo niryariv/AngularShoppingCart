@@ -30,7 +30,7 @@
 
           <h1>Product page</h1>
 
-          <add-to-cart sizes="sizes"></add-to-cart>
+          <add-to-cart sizes="sizes" on-add-to-cart="addToCart(product)" on-add-to-wait-list="addToWaitList(size)"></add-to-cart>
 
           <div>
             <h3>Mini cart</h3>
@@ -52,6 +52,8 @@
     <script src="components/angular-cookies/angular-cookies.js"></script>
     <script src="components/angular-sanitize/angular-sanitize.js"></script>
     <script src="components/angular-local-storage/angular-local-storage.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/app.js"></script>

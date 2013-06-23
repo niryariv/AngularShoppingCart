@@ -9,7 +9,10 @@ angular.module('AngularShoppingCartApp')
       $scope.activeSize = size;
     };
 
-    $scope.addToCart = function(quantity) {
+    $scope.addToCart = function(product) {
+      console.log(product);
+      return;
+
       var entityId = $scope.sizes[$scope.activeSize].entityId;
       var product = {
         "entityId": entityId,
@@ -21,6 +24,8 @@ angular.module('AngularShoppingCartApp')
 
       // @todo: Move to $watch()?
       $scope.cart = Cart.getProducts();
+
+
       $scope.productsCount = Cart.getProductsCount();
     };
 
@@ -43,16 +48,7 @@ angular.module('AngularShoppingCartApp')
       }
     };
 
-    $scope.quantity = 1;
     $scope.cart = Cart.getProducts();
     $scope.productsCount = Cart.getProductsCount();
-
-    // Assign a defualt active size.
-    for (var size in $scope.sizes) {
-      if ($scope.sizes[size].stock) {
-        $scope.activeSize = size;
-        break;
-      }
-    }
 
   }]);

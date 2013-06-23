@@ -5,8 +5,28 @@ angular.module('AngularShoppingCartApp')
     return {
       templateUrl: 'views/addtocart.html',
       restrict: 'E',
-      // @todo: Add Isolated scope.
+      scope: {
+        "sizes": '=',
+        "onAddToCart": '&'
+      },
       link: function postLink(scope, element, attrs) {
+
+        scope.product = {};
+        scope.product.quantity = 1;
+
+        scope.$watch('sizes', function(sizes, oldval) {
+          // Assign a default active size.
+          if (!sizes) {
+            return;
+          }
+
+          for (var size in sizes) {
+            if (sizes[size].stock) {
+              scope.product.selectedSize = size;
+              break;
+            }
+          }
+        });
       }
     };
   });
