@@ -40,6 +40,21 @@ angular.module('cartServices', ['LocalStorageModule'])
         return this.getItems('products');
       },
 
+      getProductsCount: function() {
+        var products = this.getProducts();
+
+        if (!products) {
+          return 0;
+        }
+
+        var count = 0;
+        for (var key in products) {
+          ++count;
+        }
+
+        return count;
+      },
+
       getLineItems: function() {
         return this.getItems('lineItems');
       },

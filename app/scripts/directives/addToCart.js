@@ -18,10 +18,8 @@ angular.module('AngularShoppingCartApp')
   .directive('miniCart', function () {
     return {
       template: '<div>{{ productsCount }}</div>',
-      restrict: 'E',
+      restrict: 'E'
       // @todo: Add Isolated scope.
-      link: function postLink(scope, element, attrs) {
-      }
     };
   });
 

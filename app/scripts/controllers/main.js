@@ -21,6 +21,7 @@ angular.module('AngularShoppingCartApp')
 
       // @todo: Move to $watch()?
       $scope.cart = Cart.getProducts();
+      $scope.productsCount = Cart.getProductsCount();
 
     };
 
@@ -45,6 +46,7 @@ angular.module('AngularShoppingCartApp')
 
     $scope.quantity = 1;
     $scope.cart = Cart.getProducts();
+    $scope.productsCount = Cart.getProductsCount();
 
     // Assign a defualt active size.
     for (var size in $scope.sizes) {
