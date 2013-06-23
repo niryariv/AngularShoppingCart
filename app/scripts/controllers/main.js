@@ -22,7 +22,6 @@ angular.module('AngularShoppingCartApp')
       // @todo: Move to $watch()?
       $scope.cart = Cart.getProducts();
       $scope.productsCount = Cart.getProductsCount();
-
     };
 
     $scope.waitList = function() {

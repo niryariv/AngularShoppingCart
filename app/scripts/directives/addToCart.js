@@ -23,3 +23,18 @@ angular.module('AngularShoppingCartApp')
     };
   });
 
+/**
+ * Show a mini cart, with the item quantity.
+ */
+angular.module('AngularShoppingCartApp')
+  .directive('cartCheckout', function () {
+    return {
+      templateUrl: 'views/cart-checkout.html',
+      restrict: 'E',
+      // @todo: Add Isolated scope.
+      scope: {
+        'products': '='
+      }
+    };
+  });
+

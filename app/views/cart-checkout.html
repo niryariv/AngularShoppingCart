@@ -1,0 +1,22 @@
+
+<h4>Checkout</h4>
+
+<table class="table">
+  <tr>
+
+    <th>Description</th>
+    <th>Quantity</th>
+    <th>Price</th>
+    <th>Total</th>
+    <th></th>
+  </tr>
+  <tr ng-repeat="item in products">
+    <td><input type="text" ng-model="item.description"class="input-small"></td>
+    <td><input type="number" ng-model="item.quantity" ng-required class="input-mini"></td>
+    <td><input type="number" ng-model="item.price" ng-required class="input-mini"></td>
+    <td>{{item.quantity * item.price | currency}}</td>
+    <td>
+      [<a href ng-click="removeItem($index)">X</a>]
+    </td>
+  </tr>
+</table>
