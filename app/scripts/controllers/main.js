@@ -23,11 +23,12 @@ angular.module('AngularShoppingCartApp')
       Cart.addProduct(product);
 
       // @todo: Move to $watch()?
-      $scope.cart = Cart.getProducts();
-
-
-      $scope.productsCount = Cart.getProductsCount();
+      $scope.cart = Cart.gettingProducts();
     };
+
+    $scope.$watch('cart', function() {
+      $scope.productsCount = Cart.getProductsCount();
+    });
 
     $scope.waitList = function() {
       alert('Add to waiting list');
