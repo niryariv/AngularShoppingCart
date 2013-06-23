@@ -18,8 +18,10 @@ angular.module('AngularShoppingCartApp')
   .directive('miniCart', function () {
     return {
       template: '<div>{{ productsCount }}</div>',
-      restrict: 'E'
-      // @todo: Add Isolated scope.
+      restrict: 'E',
+      scope: {
+        'productsCount': '@'
+      }
     };
   });
 
@@ -31,7 +33,6 @@ angular.module('AngularShoppingCartApp')
     return {
       templateUrl: 'views/cart-checkout.html',
       restrict: 'E',
-      // @todo: Add Isolated scope.
       scope: {
         'products': '='
       }
