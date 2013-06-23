@@ -41,15 +41,15 @@ angular.module('cartServices', ['LocalStorageModule'])
       },
 
       getLineItems: function() {
-        return this.getItems('LineItems');
+        return this.getItems('lineItems');
       },
 
-      addProduct: function(values) {
+      addProduct: function(product) {
         var products = this.getProducts();
 
-        // Check if we already have this product, and append the quantity.
+        products[product.entityId] = product;
 
-        localStorageService.add('cart.products', JSON.stringify(values));
+        localStorageService.add('cart.products', JSON.stringify(products));
       },
 
       addLineItem: function(name, price) {
