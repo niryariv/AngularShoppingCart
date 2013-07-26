@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('cartServices')
-  .factory('Cart', function (localStorageService) {
+  .factory('Cart', function (localStorageService, $q) {
 
     return {
 
@@ -40,25 +40,20 @@ angular.module('cartServices')
         return this.getItems('products');
       },
 
-      getProductsCount: function() {
-        var products = this.getProducts();
-
-        if (!products) {
-          return 0;
-        }
-
-        var count = 0;
-        for (var key in products) {
-          ++count;
-        }
-
-        return count;
-      },
-
       getLineItems: function() {
         return this.getItems('lineItems');
       },
 
+      addLineItem: function(name, price) {
+
+      },
+
+      /**
+       * Iterate over existing products, and add a new product, or append
+       * to and existing one.
+       *
+       * @param product
+       */
       addProduct: function(product) {
         var products = this.getProducts();
 
@@ -67,8 +62,7 @@ angular.module('cartServices')
         localStorageService.add('cart.products', JSON.stringify(products));
       },
 
-      addLineItem: function(name, price) {
-
+      removeProduct: function(product) {
       }
 
     };
