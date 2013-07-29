@@ -10,16 +10,10 @@ angular.module('AngularShoppingCartApp')
         "onAddToCart": '&'
       },
       link: function(scope, element, attrs) {
-
         scope.product = {};
         scope.product.quantity = 1;
 
         scope.$watch('sizes', function(sizes, oldval) {
-          // Assign a default active size.
-          if (!sizes) {
-            return;
-          }
-
           // Set the first selected size that is in stock.
           for (var key in sizes) {
             var size = sizes[key];
@@ -28,6 +22,17 @@ angular.module('AngularShoppingCartApp')
               break;
             }
           }
+        });
+
+        // Set the "avaialble" property.
+        scope.$watch('product.selectedSize ', function(productID, oldval) {
+          angular.forEach(scope.sizes, function(size, key){
+            if (size.id == productID) {
+              return scope.product.available = size.available;
+            }
+          });
+
+          // scope.product.available = sizes[key].available;
         });
       }
     };

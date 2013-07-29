@@ -8,14 +8,16 @@
 
   Quantity: {{ product.quantity }} <br />
 
-  Sizes: {{ sizes }}
+  Sizes: {{ sizes }} <br />
+
+  Product: {{ product }}
 
   <div class="btn-group">
     <button ng-repeat="size in sizes" type="button" class="btn btn-primary" ng-model="product.selectedSize" btn-radio="size.id">{{ size.name }}</button>
   </div>
 
   <form ng-submit="onAddToCart({product: product})">
-    <input type="number" min="1" ng-model="product.quantity" class="input-mini" />
+    <input type="number" min="1" ng-disabled="!product.available" ng-model="product.quantity" class="input-mini" />
     <input type="submit" id="submit" value="Add to Cart" />
   </form>
 </div>
