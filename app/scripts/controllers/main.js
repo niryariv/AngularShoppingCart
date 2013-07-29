@@ -1,7 +1,9 @@
 'use strict';
 
 function MainCtrl($scope, Cart, Product) {
-  $scope.addToCart = function(product) {
+  $scope.addToCart = function(item, productInfo) {
+    console.log(item);
+    console.log(productInfo);
     // Cart.addToCart();
   };
 
@@ -9,8 +11,7 @@ function MainCtrl($scope, Cart, Product) {
   var productID = 1;
 
   Product.gettingData(productID).then(function(data) {
-    $scope.sizes = data.sizes;
-    $scope.product = data.product;
+    $scope.product = data;
   });
 
   /*

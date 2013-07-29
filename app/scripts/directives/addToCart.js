@@ -6,33 +6,31 @@ angular.module('AngularShoppingCartApp')
       templateUrl: 'views/addtocart.html',
       restrict: 'E',
       scope: {
-        "sizes": '=',
+        "product": '=',
         "onAddToCart": '&'
       },
       link: function(scope, element, attrs) {
-        scope.product = {};
-        scope.product.quantity = 1;
+        scope.item = {};
+        scope.item.quantity = 1;
 
-        scope.$watch('sizes', function(sizes, oldval) {
+        scope.$watch('product.sizes', function(sizes, oldval) {
           // Set the first selected size that is in stock.
           for (var key in sizes) {
             var size = sizes[key];
             if (size.available) {
-              scope.product.selectedSize = size.id;
+              scope.item.selectedSize = size.id;
               break;
             }
           }
         });
 
         // Set the "avaialble" property.
-        scope.$watch('product.selectedSize ', function(productID, oldval) {
-          angular.forEach(scope.sizes, function(size, key){
-            if (size.id == productID) {
-              return scope.product.available = size.available;
+        scope.$watch('item.selectedSize ', function(itemID, oldval) {
+          angular.forEach(scope.product.sizes, function(size, key){
+            if (size.id == itemID) {
+              return scope.item.available = size.available;
             }
           });
-
-          // scope.product.available = sizes[key].available;
         });
       }
     };

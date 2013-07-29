@@ -30,7 +30,7 @@
 
           <h1>Product page</h1>
 
-          <add-to-cart sizes="sizes" on-add-to-cart="addToCart(product)" on-add-to-wait-list="addToWaitList(size)"></add-to-cart>
+          <add-to-cart product="product" on-add-to-cart="addToCart(item, productInfo)" on-add-to-wait-list="addToWaitList(item, productInfo)"></add-to-cart>
 
           <div>
             <h3>Mini cart</h3>
