@@ -1,15 +1,15 @@
 'use strict';
 
-function MainCtrl($scope, Cart, ProductVariant) {
+function MainCtrl($scope, Cart, Product) {
   $scope.addToCart = function(product) {
   };
 
   // @todo: Make dynamic.
   var productID = 1;
 
-  ProductVariant.gettingData(productID).then(function(data) {
+  Product.gettingData(productID).then(function(data) {
     $scope.sizes = data.sizes;
-    $scope.variant = data.variant;
+    $scope.product = data.product;
   });
 
   /*
@@ -22,4 +22,4 @@ function MainCtrl($scope, Cart, ProductVariant) {
 
 };
 
-MainCtrl.$inject = ['$scope', 'Cart', 'ProductVariant'];
+MainCtrl.$inject = ['$scope', 'Cart', 'Product'];

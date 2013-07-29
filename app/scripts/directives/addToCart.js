@@ -20,9 +20,11 @@ angular.module('AngularShoppingCartApp')
             return;
           }
 
-          for (var size in sizes) {
-            if (sizes[size].stock) {
-              scope.product.selectedSize = size;
+          // Set the first selected size that is in stock.
+          for (var key in sizes) {
+            var size = sizes[key];
+            if (size.available) {
+              scope.product.selectedSize = size.id;
               break;
             }
           }
