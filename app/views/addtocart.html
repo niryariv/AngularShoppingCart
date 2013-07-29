@@ -8,10 +8,6 @@
 
   Quantity: {{ product.quantity }} <br />
 
-  Sizes: {{ sizes }} <br />
-
-  Product: {{ product }}
-
   <div class="btn-group">
     <button ng-repeat="size in sizes" type="button" class="btn btn-primary" ng-model="product.selectedSize" btn-radio="size.id">{{ size.name }}</button>
   </div>

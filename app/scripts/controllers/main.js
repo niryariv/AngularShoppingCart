@@ -2,6 +2,7 @@
 
 function MainCtrl($scope, Cart, Product) {
   $scope.addToCart = function(product) {
+    // Cart.addToCart();
   };
 
   // @todo: Make dynamic.

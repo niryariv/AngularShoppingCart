@@ -11,13 +11,16 @@
       "available": false
     }
   ],
-  "variant": {
+  "info": {
     "id": "10",
     "name": "Galina - Black",
     "images": {
-      "main": "http://www.imanimo.com/sites/default/files/styles/zoom/public/adiblack1.jpg"
+      "thumb": "thumb-image.jpg"
     },
-    "color": "blue",
-    "price": "20"
+    "price": [
+      {
+        "usd": "20"
+      }
+    ]
   }
 }
