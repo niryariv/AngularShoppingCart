@@ -1,0 +1,23 @@
+{
+  "sizes": [
+    {
+      "id": 1,
+      "name": "small",
+      "available": true
+    },
+    {
+      "id": 2,
+      "name": "large",
+      "available": false
+    }
+  ],
+  "variant": {
+    "id": "10",
+    "name": "Galina - Black",
+    "images": {
+      "main": "http://www.imanimo.com/sites/default/files/styles/zoom/public/adiblack1.jpg"
+    },
+    "color": "blue",
+    "price": "20"
+  }
+}

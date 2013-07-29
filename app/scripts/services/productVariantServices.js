@@ -1,19 +1,21 @@
 'use strict';
 
-angular.module('AngularShoppingCartApp')
-  .factory('sizeServices', function (localStorageService, $q) {
+AngularShoppingCartApp.factory('ProductVariant', function ($http, localStorageService, $q) {
     return {
 
-      gettingSizes: function () {
+      gettingData: function (productId) {
         var defer = $q.defer();
 
+        var uniqueId = 'product:' + productId;
+
         // LocalStorage.
-        var sizes = localStorageService.get('sizes') ? JSON.parse(localStorageService.get('sizes')) : false;
+        var sizes = localStorageService.get(uniqueId) ? JSON.parse(localStorageService.get(uniqueId)) : false;
 
         if (!sizes) {
           // HTTP.
           $http.get('product.json').success(function(data) {
             // Add to localStorage.
+            localStorageService.set(uniqueId, data);
             sizes = data;
           });
         }

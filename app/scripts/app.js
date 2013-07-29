@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('AngularShoppingCartApp', ['LocalStorageModule', 'productsServices', 'cartServices', 'ui.bootstrap']);
+var AngularShoppingCartApp = angular.module('AngularShoppingCartApp', ['LocalStorageModule', 'ui.bootstrap']);

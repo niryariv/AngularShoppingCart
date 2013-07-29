@@ -9,7 +9,7 @@ angular.module('AngularShoppingCartApp')
         "sizes": '=',
         "onAddToCart": '&'
       },
-      link: function postLink(scope, element, attrs) {
+      link: function(scope, element, attrs) {
 
         scope.product = {};
         scope.product.quantity = 1;
