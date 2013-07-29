@@ -3,24 +3,34 @@
 AngularShoppingCartApp.factory('ProductVariant', function ($http, localStorageService, $q) {
     return {
 
-      gettingData: function (productId) {
+      gettingData: function (variantId) {
         var defer = $q.defer();
 
-        var uniqueId = 'product:' + productId;
+        var uniqueId = 'variant:' + variantId;
+
+        var timestamp = new Date().getTime();
 
         // LocalStorage.
-        var sizes = localStorageService.get(uniqueId) ? JSON.parse(localStorageService.get(uniqueId)) : false;
+        var variantData = localStorageService.get(uniqueId) ? JSON.parse(localStorageService.get(uniqueId)) : false;
 
-        if (!sizes) {
-          // HTTP.
-          $http.get('product.json').success(function(data) {
+        if (variantData && variantData.expire < timestamp) {
+          // Reset the data.
+          variantData = {};
+        }
+
+        if (!variantData) {
+          // Fetch data from server.
+          // @todo: Fix URL.
+          $http.get('products/product.json').success(function(data) {
+            // Cache values for 10 minutes.
+            data.expire = timestamp + (60 * 10);
             // Add to localStorage.
-            localStorageService.set(uniqueId, data);
-            sizes = data;
+            localStorageService.add(uniqueId, JSON.stringify(data));
+            variantData = data;
           });
         }
 
-        defer.resolve(sizes);
+        defer.resolve(variantData);
         return defer.promise;
       }
     };
