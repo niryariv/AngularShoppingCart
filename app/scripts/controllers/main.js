@@ -9,7 +9,7 @@ function MainCtrl($scope, Cart, ProductVariant) {
 
   ProductVariant.gettingData(productID).then(function(data) {
     $scope.sizes = data.sizes;
-    $scope.variantInfo = data.sizes;
+    $scope.variant = data.variant;
   });
 
   /*

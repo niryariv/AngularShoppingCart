@@ -13,12 +13,7 @@ AngularShoppingCartApp.factory('ProductVariant', function ($http, localStorageSe
         // LocalStorage.
         var variantData = localStorageService.get(uniqueId) ? JSON.parse(localStorageService.get(uniqueId)) : false;
 
-        if (variantData && variantData.expire < timestamp) {
-          // Reset the data.
-          variantData = {};
-        }
-
-        if (!variantData) {
+        if (!variantData || variantData.expire < timestamp) {
           // Fetch data from server.
           // @todo: Fix URL.
           $http.get('products/product.json').success(function(data) {
