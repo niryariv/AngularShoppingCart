@@ -10,11 +10,11 @@
     <th>Total</th>
     <th></th>
   </tr>
-  <tr ng-repeat="item in products">
-    <td><input type="text" ng-model="item.description"class="input-small"></td>
-    <td><input type="number" min="1" ng-model="item.quantity" ng-required class="input-mini"></td>
-    <td>{{ item.price }}</td>
-    <td>{{item.quantity * item.price | currency}}</td>
+  <tr ng-repeat="item in cart.items">
+    <td><input type="text" ng-model="cart[key].product.name"class="input-small"></td>
+    <td><input type="number" min="1" ng-model="item.item.quantity" ng-required class="input-mini"></td>
+    <td>{{ item.item.price }}</td>
+    <td>{{ item.item.quantity * item.item.price | currency}}</td>
     <td>
       <div href ng-click="removeItem($index)" class="btn">X</div>
     </td>
