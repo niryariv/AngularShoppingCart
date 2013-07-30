@@ -16,8 +16,7 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
     gettingCart: function() {
       var defer = $q.defer();
 
-      // var values = localStorageService.get('cart');
-      var values;
+      var values = localStorageService.get('cart');
       if (values) {
         this.data.cart = values;
       }
