@@ -4,6 +4,8 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
 
   return {
 
+    cart: {'items': []},
+
     /**
      * Return all the cart items (products, line items).
      */
@@ -53,12 +55,19 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
      *
      * @param product
      */
-    addProduct: function(product) {
-      var products = this.getProducts();
+    addItem: function(item, product) {
+      var self = this;
+      angular.forEach(this.cart.items, function(values, key) {
+        if (values.product.id == product.id) {
+          // Add quantity.
+          self.cart.items[key].item.quantity += item.quantity;
+          return;
+        }
+      });
 
-      products[product.entityId] = product;
+      this.cart.items.push({"item": item, "product": product});
+      localStorageService.add('cart', JSON.stringify(this.cart));
 
-      localStorageService.add('cart.products', JSON.stringify(products));
     },
 
     removeProduct: function(product) {

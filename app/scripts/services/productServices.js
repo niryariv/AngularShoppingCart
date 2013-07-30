@@ -11,7 +11,8 @@ AngularShoppingCartApp.factory('Product', function ($http, localStorageService, 
         var timestamp = new Date().getTime();
 
         // LocalStorage.
-        var productData = localStorageService.get(uniqueId) ? JSON.parse(localStorageService.get(uniqueId)) : false;
+        var productData = localStorageService.get(uniqueId) ? localStorageService.get(uniqueId) : false;
+
 
         if (!productData || productData.expire < timestamp) {
           // Fetch data from server.
