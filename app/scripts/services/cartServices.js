@@ -9,12 +9,12 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
     /**
      * Return all the cart items (products, line items).
      */
-    gettingData: function() {
+    getCart: function() {
       var values = localStorageService.get('cart');
-      if (values == undefined) {
-        return {};
+      if (values) {
+        this.cart = values;
       }
-      return JSON.parse(values);
+      return this.cart;
     },
 
     /**
