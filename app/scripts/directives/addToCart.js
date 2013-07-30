@@ -42,10 +42,10 @@ angular.module('AngularShoppingCartApp')
 angular.module('AngularShoppingCartApp')
   .directive('miniCart', function () {
     return {
-      template: '<div>{{ productsCount }}</div>',
+      template: '<div>{{ itemsCount.length }}</div>',
       restrict: 'E',
       scope: {
-        'productsCount': '@'
+        'itemsCount': '='
       }
     };
   });
