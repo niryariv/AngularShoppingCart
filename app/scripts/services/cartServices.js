@@ -4,17 +4,26 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
 
   return {
 
-    cart: {'items': []},
+    data: {
+      "cart": {
+        "items": []
+      }
+    },
 
     /**
      * Return all the cart items (products, line items).
      */
-    getCart: function() {
-      var values = localStorageService.get('cart');
+    gettingCart: function() {
+      var defer = $q.defer();
+
+      // var values = localStorageService.get('cart');
+      var values;
       if (values) {
-        this.cart = values;
+        this.data.cart = values;
       }
-      return this.cart;
+
+      defer.resolve(this.data.cart);
+      return defer.promise;
     },
 
     /**
@@ -57,17 +66,23 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
      */
     addItem: function(item, product) {
       var self = this;
-      angular.forEach(this.cart.items, function(values, key) {
+      var itemExists = false;
+      angular.forEach(this.data.cart.items, function(values, key) {
         if (values.product.id == product.id) {
           // Add quantity.
-          self.cart.items[key].item.quantity += item.quantity;
+          self.data.cart.items[key].item.quantity += item.quantity;
+          itemExists = true;
           return;
         }
       });
 
-      this.cart.items.push({"item": item, "product": product});
-      localStorageService.add('cart', JSON.stringify(this.cart));
+      if (!itemExists) {
+        // Add a copy of the item, to make sure it is not a reference to the
+        // original item.
+        this.data.cart.items.push({"item": angular.copy(item), "product": product});
+      }
 
+      localStorageService.add('cart', JSON.stringify(this.data.cart));
     },
 
     removeProduct: function(product) {

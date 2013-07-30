@@ -12,7 +12,9 @@ function MainCtrl($scope, Cart, Product) {
     $scope.product = data;
   });
 
-  $scope.cart = Cart.getCart();
+  Cart.gettingCart().then(function(data) {
+    $scope.cart = Cart.data.cart;
+  });
 
   /*
 
