@@ -10,11 +10,11 @@
     <th>Total</th>
     <th></th>
   </tr>
-  <tr ng-repeat="lineItem in cart.items">
-    <td>{{lineItem.product.name}}</td>
-    <td><input type="number" min="1" ng-model="lineItem.lineItem.quantity" ng-required class="input-mini"></td>
-    <td>{{ lineItem.product.price[0].usd }}</td>
-    <td>{{ lineItem.lineItem.quantity * lineItem.product.price[0].usd | currency}}</td>
+  <tr ng-repeat="lineItem in cart.lineItems">
+    <td>{{lineItem.name}}</td>
+    <td><input type="number" min="1" ng-model="lineItem.quantity" ng-required class="input-mini"></td>
+    <td>{{ lineItem.price[0].usd }}</td>
+    <td>{{ lineItem.quantity * lineItem.price[0].usd | currency}}</td>
     <td>
       <div href ng-click="removeItem($index)" class="btn">X</div>
     </td>

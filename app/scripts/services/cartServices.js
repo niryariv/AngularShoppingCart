@@ -66,19 +66,17 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
     addItem: function(lineItem, product) {
       var self = this;
       var itemExists = false;
-      angular.forEach(this.data.cart.items, function(values, key) {
-        if (values.item.sizeId == lineItem.sizeId) {
+      angular.forEach(this.data.cart.lineItems, function(values, key) {
+        if (values.sizeId == lineItem.sizeId) {
           // Add quantity.
-          self.data.cart.lineItems[key].item.quantity += lineItem.quantity;
+          self.data.cart.lineItems[key].quantity += lineItem.quantity;
           itemExists = true;
           return;
         }
       });
 
       if (!itemExists) {
-        // Add a copy of the lineItem, to make sure it is not a reference to the
-        // original lineItem.
-        this.data.cart.lineItems.push({"lineItem": angular.copy(lineItem), "product": product});
+        this.data.cart.lineItems.push(angular.extend({}, lineItem, product));
       }
 
       localStorageService.add('cart', JSON.stringify(this.data.cart));
