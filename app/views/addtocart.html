@@ -2,20 +2,20 @@
 
   <h4>Sizes</h4>
 
-  Active size: {{ item.selectedSize }} <br />
+  Size ID: {{ lineItem.sizeId }} <br />
 
-  Quantity: {{ item.quantity }} <br />
+  Quantity: {{ lineItem.quantity }} <br />
 
   Product: {{product}} <br />
 
-  Item: {{item }}
+  Item: {{lineItem }}
 
   <div class="btn-group">
-    <button ng-repeat="size in product.sizes" type="button" class="btn btn-primary" ng-model="item.selectedSize" btn-radio="size.id">{{ size.name }}</button>
+    <button ng-repeat="size in product.sizes" type="button" class="btn btn-primary" ng-model="lineItem.sizeId" btn-radio="size.sizeId">{{ size.name }}</button>
   </div>
 
-  <form ng-submit="onAddToCart({item: item, productInfo: product.info})">
-    <input type="number" min="1" ng-disabled="!item.available" ng-model="item.quantity" class="input-mini" />
+  <form ng-submit="onAddToCart({lineItem: lineItem, productInfo: product.info})">
+    <input type="number" min="1" ng-disabled="!lineItem.available" ng-model="lineItem.quantity" class="input-mini" />
     <input type="submit" id="submit" value="Add to Cart" />
   </form>
 </div>

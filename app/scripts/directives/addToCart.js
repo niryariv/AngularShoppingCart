@@ -10,25 +10,25 @@ angular.module('AngularShoppingCartApp')
         "onAddToCart": '&'
       },
       link: function(scope, element, attrs) {
-        scope.item = {};
-        scope.item.quantity = 1;
+        scope.lineItem = {};
+        scope.lineItem.quantity = 1;
 
         scope.$watch('product.sizes', function(sizes, oldval) {
           // Set the first selected size that is in stock.
           for (var key in sizes) {
             var size = sizes[key];
             if (size.available) {
-              scope.item.selectedSize = size.id;
+              scope.lineItem.sizeId = size.sizeId;
               break;
             }
           }
         });
 
-        // Set the "avaialble" property.
-        scope.$watch('item.selectedSize ', function(itemID, oldval) {
+        // Set the "available" property.
+        scope.$watch('lineItem.sizeId ', function(lineItemID, oldval) {
           angular.forEach(scope.product.sizes, function(size, key){
-            if (size.id == itemID) {
-              return scope.item.available = size.available;
+            if (size.sizeId == lineItemID) {
+              return scope.lineItem.available = size.available;
             }
           });
         });
@@ -37,21 +37,21 @@ angular.module('AngularShoppingCartApp')
   });
 
 /**
- * Show a mini cart, with the item quantity.
+ * Show a mini cart, with the lineItem quantity.
  */
 angular.module('AngularShoppingCartApp')
   .directive('miniCart', function () {
     return {
-      template: '<div>{{ itemsCount.length }}</div>',
+      template: '<div>{{ lineItemsCount.length }}</div>',
       restrict: 'E',
       scope: {
-        'itemsCount': '='
+        'lineItemsCount': '='
       }
     };
   });
 
 /**
- * Show a mini cart, with the item quantity.
+ * Show a mini cart, with the line Item quantity.
  */
 angular.module('AngularShoppingCartApp')
   .directive('cartCheckout', function () {

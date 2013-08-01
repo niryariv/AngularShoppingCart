@@ -6,7 +6,7 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
 
     data: {
       "cart": {
-        "items": []
+        "lineItems": []
       }
     },
 
@@ -63,22 +63,22 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
      *
      * @param product
      */
-    addItem: function(item, product) {
+    addItem: function(lineItem, product) {
       var self = this;
       var itemExists = false;
       angular.forEach(this.data.cart.items, function(values, key) {
-        if (values.product.id == product.id) {
+        if (values.item.sizeId == lineItem.sizeId) {
           // Add quantity.
-          self.data.cart.items[key].item.quantity += item.quantity;
+          self.data.cart.lineItems[key].item.quantity += lineItem.quantity;
           itemExists = true;
           return;
         }
       });
 
       if (!itemExists) {
-        // Add a copy of the item, to make sure it is not a reference to the
-        // original item.
-        this.data.cart.items.push({"item": angular.copy(item), "product": product});
+        // Add a copy of the lineItem, to make sure it is not a reference to the
+        // original lineItem.
+        this.data.cart.lineItems.push({"lineItem": angular.copy(lineItem), "product": product});
       }
 
       localStorageService.add('cart', JSON.stringify(this.data.cart));

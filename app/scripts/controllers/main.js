@@ -1,8 +1,8 @@
 'use strict';
 
 function MainCtrl($scope, Cart, Product) {
-  $scope.addToCart = function(item, productInfo) {
-    Cart.addItem(item, productInfo);
+  $scope.addToCart = function(lineItem, productInfo) {
+    Cart.addItem(lineItem, productInfo);
   };
 
   // @todo: Make dynamic.

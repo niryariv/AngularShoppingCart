@@ -1,18 +1,18 @@
 {
   "sizes": [
     {
-      "id": 1,
+      "sizeId": 1,
       "name": "small",
       "available": true
     },
     {
-      "id": 2,
+      "sizeId": 2,
       "name": "large",
       "available": false
     }
   ],
   "info": {
-    "id": "10",
+    "productId": 10,
     "name": "Galina - Black",
     "images": {
       "thumb": "thumb-image.jpg"
