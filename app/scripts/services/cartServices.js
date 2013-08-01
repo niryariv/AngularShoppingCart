@@ -6,7 +6,9 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
 
     data: {
       "cart": {
-        "lineItems": []
+        "lineItems": [],
+        "quantity": 0,
+        "total": 0
       }
     },
 
@@ -53,17 +55,13 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
       return this.getItems('lineItems');
     },
 
-    addLineItem: function(name, price) {
-
-    },
-
     /**
      * Iterate over existing products, and add a new product, or append
      * to and existing one.
      *
      * @param product
      */
-    addItem: function(lineItem, product) {
+    addLineItem: function(lineItem, product) {
       var self = this;
       var itemExists = false;
       angular.forEach(this.data.cart.lineItems, function(values, key) {
@@ -78,6 +76,9 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
       if (!itemExists) {
         this.data.cart.lineItems.push(angular.extend({}, lineItem, product));
       }
+
+      this.data.cart.quantity += lineItem.quantity;
+      this.data.cart.total += lineItem.quantity * product.price[0].usd;
 
       localStorageService.add('cart', JSON.stringify(this.data.cart));
     },

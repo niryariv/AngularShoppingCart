@@ -9,6 +9,11 @@
       "sizeId": 2,
       "name": "large",
       "available": false
+    },
+    {
+      "sizeId": 3,
+      "name": "X-large",
+      "available": true
     }
   ],
   "info": {

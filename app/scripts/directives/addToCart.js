@@ -59,7 +59,8 @@ angular.module('AngularShoppingCartApp')
       templateUrl: 'views/cart-checkout.html',
       restrict: 'E',
       scope: {
-        'cart': '='
+        'cart': '=',
+        "removeLineItem": '&'
       }
     };
   });

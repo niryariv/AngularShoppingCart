@@ -2,7 +2,12 @@
 
 function MainCtrl($scope, Cart, Product) {
   $scope.addToCart = function(lineItem, productInfo) {
-    Cart.addItem(lineItem, productInfo);
+    Cart.addLineItem(lineItem, productInfo);
+  };
+
+  $scope.removeLineItem = function(key) {
+    console.log(key);
+    Cart.removeLineItem(key);
   };
 
   // @todo: Make dynamic.

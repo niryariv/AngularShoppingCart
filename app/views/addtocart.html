@@ -16,6 +16,6 @@
 
   <form ng-submit="onAddToCart({lineItem: lineItem, productInfo: product.info})">
     <input type="number" min="1" ng-disabled="!lineItem.available" ng-model="lineItem.quantity" class="input-mini" />
-    <input type="submit" id="submit" value="Add to Cart" />
+    <input type="submit" id="submit" ng-disabled="!lineItem.available" value="Add to Cart" />
   </form>
 </div>
