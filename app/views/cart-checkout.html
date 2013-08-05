@@ -16,7 +16,7 @@
     <td>{{ lineItem.price[0].usd }}</td>
     <td>{{ lineItem.quantity * lineItem.price[0].usd | currency}}</td>
     <td>
-      <div href ng-click="removeLineItem({key: $index})" class="btn">X</div>
+      <div href ng-click="removeLineItem({index: $index})" class="btn">X</div>
     </td>
   </tr>
   <tr>

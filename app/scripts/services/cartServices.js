@@ -78,7 +78,7 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
       localStorageService.add('cart', JSON.stringify(this.data.cart));
     },
 
-    removeProduct: function(product) {
+    removeLineItem: function(index) {
     },
 
     getQuantity: function() {
