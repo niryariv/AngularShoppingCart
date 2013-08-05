@@ -54,13 +54,16 @@ angular.module('AngularShoppingCartApp')
  * Show a mini cart, with the line Item quantity.
  */
 angular.module('AngularShoppingCartApp')
-  .directive('cartCheckout', function () {
+  .directive('cartCheckout', function (Cart) {
     return {
       templateUrl: 'views/cart-checkout.html',
       restrict: 'E',
       scope: {
         'cart': '=',
         "removeLineItem": '&'
+      },
+      link: function($scope) {
+        $scope.cartService = Cart;
       }
     };
   });

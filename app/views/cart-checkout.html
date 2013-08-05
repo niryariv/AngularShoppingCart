@@ -19,4 +19,8 @@
       <div href ng-click="removeLineItem({key: $index})" class="btn">X</div>
     </td>
   </tr>
+  <tr>
+    <strong>Quantity: {{cartService.getQuantity()}}</strong>
+    <strong>Total: {{cartService.getTotal()}}</strong>
+  </tr>
 </table>

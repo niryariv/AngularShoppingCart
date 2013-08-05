@@ -7,8 +7,6 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
     data: {
       "cart": {
         "lineItems": [],
-        "quantity": 0,
-        "total": 0
       }
     },
 
@@ -77,13 +75,28 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
         this.data.cart.lineItems.push(angular.extend({}, lineItem, product));
       }
 
-      this.data.cart.quantity += lineItem.quantity;
-      this.data.cart.total += lineItem.quantity * product.price[0].usd;
-
       localStorageService.add('cart', JSON.stringify(this.data.cart));
     },
 
     removeProduct: function(product) {
+    },
+
+    getQuantity: function() {
+      var quantity = 0;
+      angular.forEach(this.data.cart.lineItems, function(values, key) {
+        quantity += values.quantity;
+      }, quantity);
+
+      return quantity;
+    },
+
+    getTotal: function() {
+      var total = 0;
+      angular.forEach(this.data.cart.lineItems, function(values, key) {
+        total += (values.quantity * values.price[0].usd);
+      }, total);
+
+      return total;
     }
 
   };
