@@ -6,7 +6,7 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
 
     data: {
       "cart": {
-        "lineItems": [],
+        "lineItems": []
       }
     },
 
@@ -78,7 +78,8 @@ AngularShoppingCartApp.factory('Cart', function (localStorageService, $q) {
       localStorageService.add('cart', JSON.stringify(this.data.cart));
     },
 
-    removeLineItem: function(index) {
+    removeLineItem: function(key) {
+      this.data.cart.lineItems.splice(key, 1);
     },
 
     getQuantity: function() {
