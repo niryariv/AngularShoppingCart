@@ -1,22 +1,21 @@
-<div xmlns="http://www.w3.org/1999/html">
+<div>
 
   <h4>Sizes</h4>
 
-  Active size: {{ activeSize }} <br />
+  Size ID: {{ lineItem.sizeId }} <br />
 
-  Cart: {{ cart }} <br />
+  Quantity: {{ lineItem.quantity }} <br />
 
-  Quantity: {{ quantity }} <br />
+  Product: {{product}} <br />
 
-  <ul class="inline">
-    <li ng-repeat="(size, values) in sizes">
-      <a href="" ng-show="values.stock" ng-click="setActiveSize(size)">{{ size }}</a>
-      <a href="" ng-hide="values.stock" ng-click="waitList(size)">{{ size }}</a>
-    </li>
-  </ul>
+  Item: {{lineItem }}
 
-  <form ng-submit="addToCart(quantity)">
-    <input type="number" min="1" ng-model="quantity" class="input-mini" />
-    <input type="submit" id="submit" value="Add to Cart" />
+  <div class="btn-group">
+    <button ng-repeat="size in product.sizes" type="button" class="btn btn-primary" ng-model="lineItem.sizeId" btn-radio="size.sizeId">{{ size.name }}</button>
+  </div>
+
+  <form ng-submit="onAddToCart({lineItem: lineItem, productInfo: product.info})">
+    <input type="number" min="1" ng-disabled="!lineItem.available" ng-model="lineItem.quantity" class="input-mini" />
+    <input type="submit" id="submit" ng-disabled="!lineItem.available" value="Add to Cart" />
   </form>
 </div>

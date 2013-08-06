@@ -30,14 +30,16 @@
 
           <h1>Product page</h1>
 
-          <add-to-cart sizes="sizes"></add-to-cart>
+          Cart: {{ cart }} <br />
+
+          <add-to-cart product="product" on-add-to-cart="addToCart(lineItem, productInfo)" on-add-to-wait-list="addToWaitList(lineItem, productInfo)"></add-to-cart>
 
           <div>
             <h3>Mini cart</h3>
 
-            <mini-cart products-count="{{productsCount}}"></mini-cart>
+            <mini-cart line-items-count="cart.lineItems"></mini-cart>
 
-            <cart-checkout products="cart"></cart-checkout>
+            <cart-checkout cart="cart" remove-line-item="removeLineItem(key)"></cart-checkout>
 
           </div>
 
@@ -52,13 +54,15 @@
     <script src="components/angular-cookies/angular-cookies.js"></script>
     <script src="components/angular-sanitize/angular-sanitize.js"></script>
     <script src="components/angular-local-storage/angular-local-storage.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/services/productsServices.js"></script>
     <script src="scripts/directives/addToCart.js"></script>
     <script src="scripts/services/cartServices.js"></script>
+    <script src="scripts/services/productServices.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

@@ -5,36 +5,65 @@ angular.module('AngularShoppingCartApp')
     return {
       templateUrl: 'views/addtocart.html',
       restrict: 'E',
-      // @todo: Add Isolated scope.
-      link: function postLink(scope, element, attrs) {
+      scope: {
+        "product": '=',
+        "onAddToCart": '&'
+      },
+      link: function(scope, element, attrs) {
+        scope.lineItem = {};
+        scope.lineItem.quantity = 1;
+
+        scope.$watch('product.sizes', function(sizes, oldval) {
+          // Set the first selected size that is in stock.
+          for (var key in sizes) {
+            var size = sizes[key];
+            if (size.available) {
+              scope.lineItem.sizeId = size.sizeId;
+              break;
+            }
+          }
+        });
+
+        // Set the "available" property.
+        scope.$watch('lineItem.sizeId ', function(lineItemID, oldval) {
+          angular.forEach(scope.product.sizes, function(size, key){
+            if (size.sizeId == lineItemID) {
+              return scope.lineItem.available = size.available;
+            }
+          });
+        });
       }
     };
   });
 
 /**
- * Show a mini cart, with the item quantity.
+ * Show a mini cart, with the lineItem quantity.
  */
 angular.module('AngularShoppingCartApp')
   .directive('miniCart', function () {
     return {
-      template: '<div>{{ productsCount }}</div>',
+      template: '<div>{{ lineItemsCount.length }}</div>',
       restrict: 'E',
       scope: {
-        'productsCount': '@'
+        'lineItemsCount': '='
       }
     };
   });
 
 /**
- * Show a mini cart, with the item quantity.
+ * Show a mini cart, with the line Item quantity.
  */
 angular.module('AngularShoppingCartApp')
-  .directive('cartCheckout', function () {
+  .directive('cartCheckout', function (Cart) {
     return {
       templateUrl: 'views/cart-checkout.html',
       restrict: 'E',
       scope: {
-        'products': '='
+        'cart': '=',
+        "removeLineItem": '&'
+      },
+      link: function($scope) {
+        $scope.cartService = Cart;
       }
     };
   });

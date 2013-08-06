@@ -1,58 +1,34 @@
 'use strict';
 
-angular.module('AngularShoppingCartApp')
-  .controller('MainCtrl', ['$scope', 'Products', 'Cart', function ($scope, Products, Cart) {
+function MainCtrl($scope, Cart, Product) {
+  $scope.addToCart = function(lineItem, productInfo) {
+    Cart.addLineItem(lineItem, productInfo);
+  };
 
-    // angularLocalStorage.constant('prefix', 'AngularShoppingCartApp');
+  $scope.removeLineItem = function(key) {
+    console.log(key);
+    Cart.removeLineItem(key);
+  };
 
-    $scope.setActiveSize = function(size) {
-      $scope.activeSize = size;
-    };
+  // @todo: Make dynamic.
+  var productID = 1;
 
-    $scope.addToCart = function(quantity) {
-      var entityId = $scope.sizes[$scope.activeSize].entityId;
-      var product = {
-        "entityId": entityId,
-        "quantity": quantity,
-        "price": 100
-      };
+  Product.gettingData(productID).then(function(data) {
+    $scope.product = data;
+  });
 
-      Cart.addProduct(product);
+  Cart.gettingCart().then(function(data) {
+    $scope.cart = Cart.data.cart;
+  });
 
-      // @todo: Move to $watch()?
-      $scope.cart = Cart.getProducts();
-      $scope.productsCount = Cart.getProductsCount();
-    };
+  /*
 
-    $scope.waitList = function() {
-      alert('Add to waiting list');
-    };
+  Cart.gettingData().then(function(data) {
+    $scope.cart = data;
+  });
 
-    $scope.sizes = {
-      "small": {
-        "entityId": 1,
-        "stock": 100
-      },
-      "medium": {
-        "entityId": 2,
-        "stock": 50
-      },
-      "out": {
-        "entityId": 3,
-        "stock": 0
-      }
-    };
+  */
 
-    $scope.quantity = 1;
-    $scope.cart = Cart.getProducts();
-    $scope.productsCount = Cart.getProductsCount();
+};
 
-    // Assign a defualt active size.
-    for (var size in $scope.sizes) {
-      if ($scope.sizes[size].stock) {
-        $scope.activeSize = size;
-        break;
-      }
-    }
-
-  }]);
+MainCtrl.$inject = ['$scope', 'Cart', 'Product'];

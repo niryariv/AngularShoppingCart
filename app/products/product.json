@@ -1,0 +1,31 @@
+{
+  "sizes": [
+    {
+      "sizeId": 1,
+      "name": "small",
+      "available": true
+    },
+    {
+      "sizeId": 2,
+      "name": "large",
+      "available": false
+    },
+    {
+      "sizeId": 3,
+      "name": "X-large",
+      "available": true
+    }
+  ],
+  "info": {
+    "productId": 10,
+    "name": "Galina - Black",
+    "images": {
+      "thumb": "thumb-image.jpg"
+    },
+    "price": [
+      {
+        "usd": "20"
+      }
+    ]
+  }
+}
